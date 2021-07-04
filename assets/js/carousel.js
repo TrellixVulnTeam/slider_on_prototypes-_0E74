@@ -161,8 +161,6 @@ _initProps: function() {
 
   pressKey: function (event) {
 
-    console.log('pressKey - work');
-
     if (event.code === 'ArrowLeft') {
       this.prevWave();
     }
@@ -218,7 +216,6 @@ _initProps: function() {
 
 function SwipeCarousel() {
   Carousel.apply(this, arguments);
-  console.log('this: ', this);
 }
 
 SwipeCarousel.prototype = Object.create(Carousel.prototype);
