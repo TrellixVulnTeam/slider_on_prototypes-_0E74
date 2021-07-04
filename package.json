@@ -1,0 +1,37 @@
+{
+  "name": "protoconstructor",
+  "version": "1.0.0",
+  "description": "lesson22_Create_Library",
+  "main": "index.js",
+  "devDependencies": {
+    "autoprefixer": "^10.2.6",
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-csscomb": "^3.1.0",
+    "gulp-notify": "^4.0.0",
+    "gulp-postcss": "^9.0.0",
+    "gulp-sass": "^4.1.0",
+    "node-sass": "^6.0.0",
+    "postcss": "^8.3.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gulp",
+    "html",
+    "scss",
+    "js",
+    "git"
+  ],
+  "author": "Vadim",
+  "license": "MIT",
+  "dependencies": {
+    "browser-sync": "^2.26.14",
+    "css-mqpacker": "^7.0.0",
+    "lodash": "^4.17.21",
+    "minimist": "^1.2.5",
+    "normalize-scss": "^7.0.1",
+    "sort-css-media-queries": "^1.5.4"
+  }
+}
