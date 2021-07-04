@@ -17,13 +17,9 @@ function Carousel() {
   this.intervalID  = null;
   this.isPlaying = true;
   
-  this.swipeStartX = null;
-  this.swipeEndX = null;
+  // this.swipeStartX = null;
+  // this.swipeEndX = null;
 }
-
-
-
-
 
 
 
@@ -49,7 +45,7 @@ _initIndicators: function() {
   const INDICATORS = document.createElement('ul');
   INDICATORS.setAttribute('class', 'indicators-container');
 
-  for (let i = 0; i < this.slides.length; i++) {
+  for (let i = 0; i < this.slidesCount; i++) {
     let li = document.createElement('li');
     li.className = 'indicator';
     li.setAttribute('data-slide-to', i);
@@ -75,8 +71,8 @@ _initProps: function() {
     this.pauseBtn.addEventListener('click', this.pausePlay.bind(this));
     this.prevBtn.addEventListener('click', this.prev.bind(this));
     this.nextBtn.addEventListener('click', this.next.bind(this));
-    this.containerSwipe.addEventListener('touchstart', this.swipeStart.bind(this));
-    this.containerSwipe.addEventListener('touchend', this.swipeEnd.bind(this));
+    // this.containerSwipe.addEventListener('touchstart', this.swipeStart.bind(this));
+    // this.containerSwipe.addEventListener('touchend', this.swipeEnd.bind(this));
     this.altPrevBtn.addEventListener('click', this.prevWave.bind(this));
     this.altNextBtn.addEventListener('click', this.nextWave.bind(this));
     document.addEventListener('keydown', this.pressKey.bind(this));
@@ -178,17 +174,17 @@ _initProps: function() {
     }
   },
 
-  swipeStart: function(event) {
-    this.swipeStartX = event.changedTouches[0].pageX;
-  },
+  // swipeStart: function(event) {
+  //   this.swipeStartX = event.changedTouches[0].pageX;
+  // },
 
-  swipeEnd: function(event) {
-    this.swipeEndX = event.changedTouches[0].pageX;
-    if ((this.swipeStartX - this.swipeEndX) > 50 ) {
-      this.next();
-    };
-    (this.swipeStartX - this.swipeEndX < -50) && this.prev();
-  },
+  // swipeEnd: function(event) {
+  //   this.swipeEndX = event.changedTouches[0].pageX;
+  //   if ((this.swipeStartX - this.swipeEndX) > 50 ) {
+  //     this.next();
+  //   };
+  //   (this.swipeStartX - this.swipeEndX < -50) && this.prev();
+  // },
 
   init: function() {
     this._initControls();
@@ -200,4 +196,49 @@ _initProps: function() {
     }, this.interval);
   }
   
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// THIS BLOCK CODE CAN COMMENT, IF DONT NEED SUPPORT SWIPES
+// AND DELETE COMMENTS FROM - let carousel = new Carousel() IN THE FILE main.js
+
+function SwipeCarousel() {
+  Carousel.apply(this, arguments);
+  console.log('this: ', this);
+}
+
+SwipeCarousel.prototype = Object.create(Carousel.prototype);
+SwipeCarousel.prototype.constructor = SwipeCarousel;
+
+//  P R I V A T E   M E T H O D
+SwipeCarousel.prototype._swipeStart = function(event) {
+    this.swipeStartX = event.changedTouches[0].pageX;
+  };
+
+SwipeCarousel.prototype._swipeEnd = function(event) {
+    this.swipeEndX = event.changedTouches[0].pageX;
+    if ((this.swipeStartX - this.swipeEndX) > 50 ) {
+      this.next();
+    };
+    (this.swipeStartX - this.swipeEndX < -50) && this.prev();
+  };
+
+SwipeCarousel.prototype._initListeners = function() {
+  Carousel.prototype._initListeners.apply(this);
+  this.containerSwipe.addEventListener('touchstart', this._swipeStart.bind(this));
+  this.containerSwipe.addEventListener('touchend', this._swipeEnd.bind(this));
 }
