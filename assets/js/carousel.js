@@ -16,9 +16,7 @@ function Carousel() {
   this.slidesCount = this.slides.length;
   this.intervalID  = null;
   this.isPlaying = true;
-  
-  // this.swipeStartX = null;
-  // this.swipeEndX = null;
+
 }
 
 
@@ -71,8 +69,6 @@ _initProps: function() {
     this.pauseBtn.addEventListener('click', this.pausePlay.bind(this));
     this.prevBtn.addEventListener('click', this.prev.bind(this));
     this.nextBtn.addEventListener('click', this.next.bind(this));
-    // this.containerSwipe.addEventListener('touchstart', this.swipeStart.bind(this));
-    // this.containerSwipe.addEventListener('touchend', this.swipeEnd.bind(this));
     this.altPrevBtn.addEventListener('click', this.prevWave.bind(this));
     this.altNextBtn.addEventListener('click', this.nextWave.bind(this));
     document.addEventListener('keydown', this.pressKey.bind(this));
@@ -172,18 +168,6 @@ _initProps: function() {
     }
   },
 
-  // swipeStart: function(event) {
-  //   this.swipeStartX = event.changedTouches[0].pageX;
-  // },
-
-  // swipeEnd: function(event) {
-  //   this.swipeEndX = event.changedTouches[0].pageX;
-  //   if ((this.swipeStartX - this.swipeEndX) > 50 ) {
-  //     this.next();
-  //   };
-  //   (this.swipeStartX - this.swipeEndX < -50) && this.prev();
-  // },
-
   init: function() {
     this._initControls();
     this._initIndicators();
@@ -195,12 +179,6 @@ _initProps: function() {
   }
   
 }
-
-
-
-
-
-
 
 
 
